@@ -336,3 +336,9 @@ body {
     transform: translateY(5px);
     box-shadow: 0px 0px 20px rgba(52, 152, 219, 1);
 }
+
+@media screen and (max-width: 700px){
+    .contenedor {
+        grid-template-columns: 1fr;
+    }
+}
