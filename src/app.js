@@ -19,22 +19,20 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-// Ruta para server data.json
+// Ruta para servir data.json
 app.get('/data.json', (req, res) => {
   res.sendFile(path.join(__dirname, 'data.json'));
 });
 
-// Ruta para obtener los datos de Notion y guardarlos en un archivo JSON
-app.get('/notion-data', async (req, res) => {
+// Función para obtener y guardar los datos de Notion
+const updateNotionData = async () => {
   try {
     const query = { database_id: DATABASE_ID };
     const { results } = await notion.databases.query(query);
 
     // Filtra y estructura los datos que deseas
     const filteredData = results.map((item) => {
-    // console.log('raza', item.properties.raza);
-
-      const properties = item.properties || {}; // Comprueba si properties existe
+      const properties = item.properties || {};
       return {
         equipo: properties.equipo?.number || null,
         nivel: properties.nivel?.number || null,
@@ -50,22 +48,33 @@ app.get('/notion-data', async (req, res) => {
         carisma: properties.carisma?.number || null,
       };
     });
+
     // Verifica si filteredData es un array antes de enviarlo
     if (Array.isArray(filteredData)) {
       // Guarda los datos filtrados en un archivo JSON
       fs.writeFileSync('data.json', JSON.stringify(filteredData, null, 2));
-      res.json({ message: 'Datos de Notion filtrados y guardados en data.json' });
-      } else {
-        console.error('Los datos filtrados no son un array válido:', filteredData);
-        res.status(500).json({ error: 'Los datos filtrados no son un array válido' });
-      }
-    } catch (error) {
-      console.error('Error al obtener datos de Notion:', error);
-      res.status(500).json({ error: 'Error al obtener datos de Notion' });
+      console.log('Datos de Notion actualizados y guardados en data.json');
+    } else {
+      console.error('Los datos filtrados no son un array válido:', filteredData);
     }
+  } catch (error) {
+    console.error('Error al obtener datos de Notion:', error);
+  }
+};
+
+// Intervalo para actualizar datos cada 5 minutos (ajusta según tus necesidades)
+const updateInterval = 5 * 60 * 1000; // 5 minutos
+setInterval(updateNotionData, updateInterval);
+
+// Ruta para obtener los datos de Notion y enviarlos como JSON
+app.get('/notion-data', (req, res) => {
+  res.json({ message: 'Datos de Notion obtenidos y actualizados automáticamente' });
 });
 
 // Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Servidor en ejecución en el puerto ${PORT}`);
 });
+
+// Actualiza los datos de Notion al iniciar el servidor
+updateNotionData();
