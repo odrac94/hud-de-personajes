@@ -48,14 +48,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Array de locaciones
 const locacionesImg = [
-'https://i.imgur.com/8zxPCVv.png',
-'https://i.imgur.com/jtLtkpK.png',
-'https://i.imgur.com/YW0s3V3.png',
-'https://i.imgur.com/oDWuqQu.png',
-'https://i.imgur.com/gSGVLD5.png',
-'https://i.imgur.com/YsF5OAU.png',
-'https://i.imgur.com/PgdSsBw.png',
-'https://i.imgur.com/Q0UQgmP.png'
+'https://i.imgur.com/ruF7JbZ.png',
+'https://i.imgur.com/6InQaR0.png',
+'https://i.imgur.com/K841DKz.png',
+'https://i.imgur.com/Gf5UFlP.png',
+'https://i.imgur.com/TBKg75P.png',
+'https://i.imgur.com/clcYZjZ.png',
+'https://i.imgur.com/wmwY4vg.png',
+'https://i.imgur.com/lC8jKAr.png',
+'https://i.imgur.com/d7rKF1N.png',
+'https://i.imgur.com/RBOyIxS.png',
+'https://i.imgur.com/7GAFAre.png',
+'https://i.imgur.com/N6NqTh4.png',
+'https://i.imgur.com/vmVVua5.png',
+'https://i.imgur.com/xKZm0Sa.png',
+'https://i.imgur.com/3MnhnAe.png',
+'https://i.imgur.com/KKLo1xJ.png',
+'https://i.imgur.com/jkmSLFP.png',
+'https://i.imgur.com/8vpCMQX.png',
+'https://i.imgur.com/psJ4GBu.png',
+'https://i.imgur.com/Gd2IChg.png',
+'https://i.imgur.com/ylanxfd.png',
+'https://i.imgur.com/OJLvdSh.png',
+'https://i.imgur.com/JqrXi2r.png',
+'https://i.imgur.com/IoR5TSa.png',
+'https://i.imgur.com/iaPi9Kb.png',
+'https://i.imgur.com/BZkvbJv.png',
+'https://i.imgur.com/pTYPVVV.png',
+'https://i.imgur.com/4KHj3R7.png'
 ];
 
 // SLIDER
