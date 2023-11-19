@@ -145,6 +145,31 @@ indicadores.forEach((indicador, index) => {
   }
 });
 }
+// Obtener todos los indicadores
+const indicadores = document.querySelectorAll('.indicador');
+
+// Función para cambiar la imagen según el indicador clicado
+function cambiarImagenSegunIndicador(event) {
+  if (event.target.classList.contains('indicador')) {
+    const indiceSeleccionado = parseInt(event.target.dataset.index);
+
+    if (indiceSeleccionado !== locacionActual) {
+      locacion.style.opacity = 0;
+      setTimeout(() => {
+        locacionActual = indiceSeleccionado;
+        locacion.src = locacionesImg[locacionActual];
+        locacion.style.opacity = 1;
+        actualizarIndicadores();
+      }, 200);
+    }
+  }
+}
+
+// Asignar la función a cada indicador
+indicadores.forEach(indicador => {
+  indicador.addEventListener('click', cambiarImagenSegunIndicador);
+});
+
 // Llama a la función para mostrar los indicadores iniciales
 actualizarIndicadores();
 
