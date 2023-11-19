@@ -336,9 +336,16 @@ body {
     transform: translateY(5px);
     box-shadow: 0px 0px 20px rgba(52, 152, 219, 1);
 }
+#personajes-movil {
+    display: none;
+}
 
-@media screen and (max-width: 700px){
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 768px) {
     .contenedor {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%; /* Columna única para dispositivos móviles */
+    }
+    #contenedor-personajes {
+        display: none;
     }
 }
